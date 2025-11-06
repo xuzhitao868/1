@@ -2,26 +2,26 @@
 Here is my control flow:
 ```mermaid
 graph TD
-    %% 1. 先定义所有的节点
-    A(开始);
-    B[设置目标风速 (Setpoint)];
-    C[风速计测量当前的“实际风速”];
-    D{实际风速 == 目标风速?};
-    E{实际风速 < 目标风速?};
-    F[控制器增加PWM信号];
-    G[控制器降低PWM信号];
-    H[风扇提高转速];
-    I[风扇降低转速];
-    J(芯片周围风速改变);
+    %% 1. Define Nodes (English Test)
+    A(Start);
+    B[Set Target Speed (Setpoint)];
+    C[Measure Current Speed];
+    D{Actual == Target?};
+    E{Actual < Target?};
+    F[Controller Increase PWM];
+    G[Controller Decrease PWM];
+    H[Fan Increases Speed];
+    I[Fan Decreases Speed];
+    J(Airspeed Changes);
 
-    %% 2. 再定义所有的连接
+    %% 2. Define Links
     A --> B;
     B --> C;
     C --> D;
-    D -- 是 --> C;
-    D -- 否 --> E;
-    E -- 是 --> F;
-    E -- 否 --> G;
+    D -- Yes --> C;
+    D -- No --> E;
+    E -- Yes --> F;
+    E -- No --> G;
     F --> H;
     G --> I;
     H --> J;
